@@ -18,20 +18,89 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Hello World</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/carousel.css">
+    <title>FIYH</title>
 </head>
-<!--dfsdfsadsfs-->
 <body>
-    <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="carouselPrincipal" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselPrincipal" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselPrincipal" data-slide-to="1"></li>
+                    <li data-target="#carouselPrincipal" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img class="first-slide" src="img/carouselPrincipal/imagen1.jpg" alt="First slide">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Mantén tu información financiera en la palma de tu mano</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="second-slide" src="img/carouselPrincipal/imagen2.jpg" alt="Second slide">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Lorem</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque esse facilis illo odio quae quaerat quia recusandae veniam, vitae?.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="third-slide" src="img/carouselPrincipal/imagen3.jpg" alt="Third slide">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                <p><a class="btn btn-lg btn-primary" href="#" role="button">Acerca de nosotros</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#carouselPrincipal" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carouselPrincipal" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="text-center col-md-12 ">
+            <button class="btn btn-default" type="submit">Ingresar</button>
+            <button class="btn btn-default" type="submit">Registrate</button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 ">
+            <img src="img/iconos/google.png" class="img-responsive center-block" alt="Registrate con Google+">
+        </div>
+    </div>
+</div>
+
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
     <script type="text/javascript">
         app.initialize();
     </script>
