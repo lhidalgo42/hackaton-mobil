@@ -120,21 +120,30 @@
                 document.getElementById("imgSemaforo").src="img/verde.png";
                 document.getElementById("txtLeyenda").innerHTML="Felicidades!!! " +
                     "tienes finanzas muy sanas, sigue asi!";
+                document.getElementById("txtLimite").value=randomIntFromInterval(20000000,15000000);
+
+
                 break;
             case 2:
                 document.getElementById("imgSemaforo").src="img/amarillo.png";
                 document.getElementById("txtLeyenda").innerHTML="Cuidado!! tienes entre 30 y 89 dias de mora" +
                     " segun los registros del SBIF. Te recomendamos atender tu situacion en la brevedad.";
+                document.getElementById("txtLimite").value=randomIntFromInterval(10000000,5000000);
                 break;
             case 3:
                 document.getElementById("imgSemaforo").src="img/rojo.png";
                 document.getElementById("txtLeyenda").innerHTML="Ojo! tienes mas de 90 dias de mora" +
                     " segun los registros del SBIF. Tienes que atender urgentemente tu estado ya que puede tener ya " +
                     "ordenes judiciales en cursos.";
+                document.getElementById("txtLimite").value="0";
                 break;
             default:
                 break;
         }
+    }
+    function randomIntFromInterval(min,max)
+    {
+        return Math.floor(Math.random()*(max-min+1)+min);
     }
     ramdomNumber();
 </script>
