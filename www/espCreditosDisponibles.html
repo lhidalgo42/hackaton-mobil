@@ -31,7 +31,6 @@
 
 <div class="container">
     <div class="row">
-
         <nav class="navbar navbar-default navbar-fixed-left">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -53,6 +52,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="espDeudaDirecta.html">Deudas directas</a></li>
                                 <li><a href="espDeudaIndirecta.html">Deudas indirectas</a></li>
+                                <li><a href="#"></a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="espCreditosDisponibles.html">Créditos disponibles</a></li>
                             </ul>
@@ -65,41 +65,34 @@
                         <li><a href="configuracion.html"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Configuración</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Acerca de</a></li>
+                        <li><a href="acerca.html"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Acerca de</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-
-
-        <div class="col-md-12 ">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <img src="img/noimage.jpg" class="img-circle center-block">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 paddingAcerca">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, officia, perspiciatis. Illo in non officiis quidem quis? Dicta exercitationem porro vel. Aliquid consectetur eveniet labore mollitia nihil repellat repudiandae rerum?
-                    </div>
-                </div>
-            </div>
+    </div>
+    <div class="container paddingGrafico" >
+        <label for="contenedorGraficoDeudaDirectaDetalle" ><b><h3>Deudas vigentes</h3></b></label>
+        <br>
+        <label for="contenedorGraficoDeudaDirectaDetalle" ><b><h5>Detalle de créditos disponibles</h5></b></label>
+        <div id="contenedorGraficoDeudaDirectaDetalle">
+            <canvas id="canvasGraficoDeudaDirectaDetalle" height="500"/>
         </div>
     </div>
-</div>
 
+</div>
 
 
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="js/Chart.min.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
-
 <script type="text/javascript">
     app.initialize();
-
+    loadDetalleDeudaDirecta();
 </script>
 </body>
 
