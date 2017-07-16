@@ -118,16 +118,12 @@ function loadChartDeudaIndirecta(){
         },
         options: {
             responsive: true,
-            title: {
-                display: true,
-                text: 'Deudas Indirectas'
-            },
             maintainAspectRatio: true
         }};
     var canvasGrafico = document.getElementById("canvasGraficoDeudaIndirecta");
     var ctx = canvasGrafico.getContext("2d");
     char = new Chart(ctx, config);
-    $("#canvasGraficoDeudaDirecta").click(
+    $("#canvasGraficoDeudaIndirecta").click(
         function(evt){
             var activePoints = char.getElementsAtEvent(evt);
             if(activePoints.length > 0) {
@@ -137,7 +133,15 @@ function loadChartDeudaIndirecta(){
                 //get value by index
                 var value = char.data.datasets[0].data[clickedElementindex];
                 alert(value+label);
-
+                if(label=="Deudas vigentes"){
+                    window.location="espDeudaIndirectaVigente.html";
+                }
+                if(label=="Deudas 30 días o más"){
+                    window.location="espDeudaIndirecta30dias.html";
+                }
+                if(label=="Deudas 90 días o más"){
+                    window.location="espDeudaIndirecta90dias.html";
+                }
             }
         }
     );
