@@ -12,7 +12,6 @@
 </head>
 <body>
 <div class="container-fluid">
-
     <div class="row">
             <div class="panel-group" id="panel-528756">
                 <div class="panel panel-default">
@@ -29,7 +28,7 @@
                                                 <label>
                                                     Rut
                                                 </label>
-                                                <input type="text" class="form-control" id="txtRut">
+                                                <input type="text" class="form-control" id="txtRut" required="true">
                                                 <input type="hidden" class="form-control" id="txtToken">
 
                                             </div>
@@ -37,13 +36,20 @@
                                                 <label>
                                                     Nombre
                                                 </label>
-                                                <input type="text" class="form-control" id="txtNombre">
+                                                <input type="text" class="form-control" id="txtNombre" required="true">
                                             </div>
                                             <div class="form-group">
                                                 <label>
                                                     Apellidos
                                                 </label>
-                                                <input type="text" class="form-control" id="txtApellidos">
+                                                <input type="text" class="form-control" id="txtApellidos" required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" >Fecha Nacimiento</label>
+                                                <div class="col-md-4">
+                                                    <input id="txtDate" name="txtDate" type="text"  class="form-control input-md" required="true">
+                                                    <span class="help-block">help</span>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label>
@@ -81,6 +87,13 @@
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" id="txtPasswordRetry">
+                            </div>
+                            <!-- Button -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Verificar identidad</label>
+                                <div class="col-md-4">
+                                    <button id="btnEscanear" name="btnEscanear" class="btn btn-primary" onclick="barcoderead()" type="button">Escanear C.I</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -152,9 +165,21 @@
 
                 </div>
             </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Button -->
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <button id="btnRegistrar" name="btnRegistrar" class="btn btn-primary" disabled="true">Registrarse</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 </div>
+<div id="contenidoRegistro" ></div>
+<script type="text/javascript" src="cordova.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/scripts.js"></script>
