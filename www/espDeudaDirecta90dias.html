@@ -93,7 +93,7 @@
                         <tr>
                             <th>Institucion</th>
                             <th>Monto</th>
-                            <th>Status</th>
+                            <th>% de deuda</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -145,11 +145,15 @@
 
     //------------TABLA------------------
     var bg = 'bgcolor="#a1999b"';
+    var tamanio = dataRandom.length;
     for(var i in dataRandom){
         var auxi = '<tr>';
         auxi += '<td>' + Bancos[i]+ '</td>';
         auxi += '<td>' + dataRandom[i]+ '</td>';
-        auxi += '<td><span class="label label-success">Active</span></td>';
+
+        porcentaje = parseFloat((dataRandom[i]*100)/dataRandom[tamanio-1],2).toFixed(1);
+
+        auxi += '<td><span class="label label-success"></span>'+porcentaje+'</td>';
         auxi += '</tr>';
         $("#tableDeudaDirectaVigente90dias tbody").append(auxi);
     }
