@@ -14,9 +14,3 @@ function menu(){
     window.location = "main.html";
 }
 
-function guardarRegistro(){
-    var rut = document.getElementById("txtRutRegistroUsuario").value;
-    var nombre = document.getElementById("txtNombreUsuario").value;
-    var direccion = document.getElementById("txtDireccionUsuario").value;
-    var telefono = document.getElementById("txtTelefono").value;
-}

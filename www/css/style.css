@@ -6,3 +6,7 @@
 .paddingAcerca{
     padding-top: 2cm;
 }
+.fill {
+    min-height: 100%;
+    height: 100%;
+}
