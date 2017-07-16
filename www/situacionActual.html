@@ -29,10 +29,16 @@
                         <img alt="Brand" src="img/iconos/logo.png" height="23" width="35">
                     </a>
                 </div>
+
                 <div class="collapse navbar-collapse" id="navBarMenu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="situacionActual.html">
+                            <span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
+                            Situación actual </a></li>
+                    </ul>
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informe de deudas<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Informe de deudas<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="espDeudaDirecta.html">Deudas directas</a></li>
                                 <li><a href="espDeudaIndirecta.html">Deudas indirectas</a></li>
@@ -42,13 +48,10 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="situacionActual.html">Situación actual </a></li>
+                        <li><a href="historico.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="perfilLaboral.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>Perfil Laboral</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
+                        <li><a href="perfilLaboral.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil Laboral</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="configuracion.html"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Configuración</a></li>
@@ -119,22 +122,22 @@
             case 1:
                 document.getElementById("imgSemaforo").src="img/verde.png";
                 document.getElementById("txtLeyenda").innerHTML="Felicidades!!! " +
-                    "tienes finanzas muy sanas, sigue asi!";
+                    "tienes una buena salud financiera , sigue asi!";
                 document.getElementById("txtLimite").value=randomIntFromInterval(20000000,15000000);
 
 
                 break;
             case 2:
                 document.getElementById("imgSemaforo").src="img/amarillo.png";
-                document.getElementById("txtLeyenda").innerHTML="Cuidado!! tienes entre 30 y 89 dias de mora" +
-                    " segun los registros del SBIF. Te recomendamos atender tu situacion en la brevedad.";
+                document.getElementById("txtLeyenda").innerHTML="Cuidado! tienes entre 30 y 89 días de mora" +
+                    " según los registros del SBIF. Te recomendamos atender tu situación en la brevedad.";
                 document.getElementById("txtLimite").value=randomIntFromInterval(10000000,5000000);
                 break;
             case 3:
                 document.getElementById("imgSemaforo").src="img/rojo.png";
-                document.getElementById("txtLeyenda").innerHTML="Ojo! tienes mas de 90 dias de mora" +
-                    " segun los registros del SBIF. Tienes que atender urgentemente tu estado ya que puede tener ya " +
-                    "ordenes judiciales en cursos.";
+                document.getElementById("txtLeyenda").innerHTML="Ojo! tienes más de 90 días de mora" +
+                    " según los registros del SBIF. Tienes que atender urgentemente tu estado ya que puedes tener ya " +
+                    "ordenes judiciales en curso.";
                 document.getElementById("txtLimite").value="0";
                 break;
             default:
