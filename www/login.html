@@ -88,18 +88,22 @@
         $.ajax({
             method: "POST",
             data: $("#form").serialize(),
-            url: "http://localhost/sessions",
+            crossDomain: true,
+            url: "http://p1.vcpc.cl/api/auth/login",
             success:function (data) {
-                if(data != ''){
-                    window.location = "main.html";
-                }
+                var dato = JSON.parse(data);
+                if(dato.status == "ok")
+                    window.location.href = "main.html";
+                else
+                    alert("El usuario o contrasena Incorrectos");
             }
         })
     });
 
     $.ajax({
         type: "POST",
-        url: "http://localhost/api/auth/token",
+        crossDomain: true,
+        url: "http://p1.vcpc.cl/api/auth/token",
         data:{},
         success: function (data) {
             $("#token").val(data);
