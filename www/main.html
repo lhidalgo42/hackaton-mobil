@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="css/carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>FIYH</title>
 </head>
 <body>
@@ -49,11 +50,11 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Situación actual <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Deudas directas</a></li>
-                                <li><a href="#">Deudas indirectas</a></li>
+                                <li><a href="espDeudaDirecta.html">Deudas directas</a></li>
+                                <li><a href="espDeudaIndirecta.html">Deudas indirectas</a></li>
                                 <li><a href="#"></a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Créditos disponibles</a></li>
+                                <li><a href="espCreditosDisponibles">Créditos disponibles</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -73,18 +74,36 @@
             </div>
         </nav>
     </div>
-    <div class="container">
-        <img src="img/grafico.png" class="img-responsive center-block" >
+    <div class="container" >
+        <div id="contenedorGraficoDeudaDirecta">
+            <canvas id="canvasGraficoDeudaDirecta" height="500"/>
+        </div>
+        <div>
+            <label for="contenedorGraficoDeudaDirecta">Presiona para ver el detalle de tus deudas</label>
+        </div>
     </div>
+    <!--<div class="container paddingGrafico">
+        <div id="contenedorGraficoIndirecta">
+            <canvas id="canvasGraficoDeudaIndirecta" />
+        </div>
+    </div>
+    <div class="container paddingGrafico">
+        <div id="contenedorGraficoCreditos">
+            <canvas id="canvasGraficoCreditos" />
+        </div>
+    </div>-->
 </div>
 
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
+<script type="text/javascript" src="js/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="js/Chart.min.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript">
     app.initialize();
+    loadChartDeudaDirecta();
 </script>
 </body>
 

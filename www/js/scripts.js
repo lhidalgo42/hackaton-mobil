@@ -6,14 +6,23 @@ function barcoderead() {
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
             //document.getElementById("btnRegistrar").disabled = true;
-            if(result.format=="QR_CODE")
+            if(result.format==="QR_CODE")
             {
+                document.getElementById("contenidoRegistro").innerHTML="hola";
                 $.ajax({
+                    type: "GET",
                     url:result.text,
-                    datatype:'html',
+                    dataType:'html',
+                    success:function(data){
+                        document.getElementById("contenidoRegistro").innerHTML="test2";
+                    },
+                    error:function(){
+                        document.getElementById("contenidoRegistro").innerHTML="test3";
+                    },
                     complete:function(data){
-                        document.getElementById("contenidoRegistro").innerHTML=data;
+                        document.getElementById("contenidoRegistro").innerHTML="test4";
                     }
+
                 })
 
             }
@@ -36,7 +45,7 @@ function barcoderead() {
             formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
             orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
             disableAnimations : true, // iOS
-            disableSuccessBeep: false // iOS
+            disableSuccessBeep: true // iOS
         }
     );
 }
