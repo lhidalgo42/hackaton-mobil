@@ -52,15 +52,15 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Situación actual <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="espDeudaDirectaVigente.html">Deudas directas</a></li>
-                                <li><a href="espDeudaDirecta30dias.html">Deudas indirectas</a></li>
+                                <li><a href="espDeudaDirecta.html">Deudas directas</a></li>
+                                <li><a href="espDeudaIndirecta.html">Deudas indirectas</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="espDeudaDirecta90dias.html">Créditos disponibles</a></li>
+                                <li><a href="espCreditosDisponibles.html">Créditos disponibles</a></li>
                             </ul>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
+                        <li><a href="historico.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="configuracion.html"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Configuración</a></li>
@@ -118,7 +118,6 @@
 
 
 <script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/Chart.bundle.min.js"></script>
@@ -126,7 +125,12 @@
 
 
 <script type="text/javascript">
-    app.initialize();
+
+    function randomIntFromInterval(min,max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
+
+
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
     };
@@ -140,6 +144,19 @@
         green: 'rgb(0, 204, 0)'
     };
 
+    var dataRandom = [
+        randomIntFromInterval(800000,1200000),
+        randomIntFromInterval(600000,1000000),
+        randomIntFromInterval(800000,1800000),
+        randomIntFromInterval(800000,1800000)
+    ];
+    var total=0;
+    dataRandom.forEach(function(entry) {
+        total = total+entry;
+    });
+    //dataRandom.push({label:"Total",value:total});
+    dataRandom.push(total);
+
     var barChartData = {
         labels: Bancos,
         datasets: [{
@@ -147,13 +164,7 @@
             backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
             borderColor: window.chartColors.red,
             borderWidth: 1,
-            data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor()
-            ]
+            data: dataRandom
         }]
     };
 

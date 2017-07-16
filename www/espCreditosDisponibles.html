@@ -61,7 +61,7 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
+                        <li><a href="historico.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="configuracion.html"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Configuración</a></li>
@@ -73,9 +73,10 @@
             </div>
         </nav>
     </div>
-    <div class="container" >
+    <div class="container" align="center">
         <div id="contenedorGraficoCreditos">
-            <canvas id="canvasGraficoCreditos" height="500"/>
+            <label for="contenedorGraficoCreditos" ><b><h3>Créditos disponibles</h3></b></label>
+            <canvas id="canvasGraficoCreditos" height="480"/>
         </div>
         <div class="container">
             <div class="row">
@@ -113,34 +114,44 @@
                             <td><span class="label label-success">Active</span>
                             </td>
                         </tr>
-                        <tr>
-                            <td bgcolor="#a1999b">Total</td>
-                            <td bgcolor="#a1999b">46.000.000</td>
-                            <td bgcolor="#a1999b"><span class="label label-success">Active</span>
-                            </td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
     </div>
+        <div class="container" >
+            <div class="col-md-12">
+                <a href="espDeudaDirecta.html"><span class="label label-default" >Deudas directas</span></a>
+                <a href="espDeudaIndirecta.html"><span class="label label-default" >Deudas indirectas</span></a>
+            </div>
+        </div>
 </div>
 
 <script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/Chart.bundle.min.js"></script>
 <script type="text/javascript" src="js/Chart.min.js"></script>
 
 <script type="text/javascript">
-    app.initialize();
+
+    function randomIntFromInterval(min,max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
+
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
     };
 
+    var dataRandom = [
+        randomIntFromInterval(800000,3200000),
+        randomIntFromInterval(600000,7000000),
+        randomIntFromInterval(800000,5800000),
+        randomIntFromInterval(800000,2800000),
+        randomIntFromInterval(800000,3800000)
+    ];
 
-    var Bancos = ["BCI", "Santander", "Banco Estado", "Banco de Chile","Total"];
+    var Bancos = ["BCI", "Santander", "Banco Estado", "Banco de Chile"];
     var color = Chart.helpers.color;
     window.chartColors = {
         red: 'rgb(255, 0, 0)',
@@ -155,13 +166,7 @@
             backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
             borderColor: window.chartColors.red,
             borderWidth: 1,
-            data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor()
-            ]
+            data: dataRandom
         }]
     };
 
@@ -191,8 +196,10 @@
                             ctx.fillText(dataset.data[i], model.x, model.y - 5);
                         }
                     });
-                }}
+                }
+            }
         });
+    }
 </script>
 </body>
 

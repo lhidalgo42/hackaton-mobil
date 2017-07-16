@@ -60,7 +60,7 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
+                        <li><a href="historico.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="configuracion.html"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Configuración</a></li>
@@ -75,10 +75,17 @@
     <div class="container" align="center">
         <label for="contenedorGraficoDeudaDirecta" ><b><h3>Deudas directas</h3></b></label>
         <div id="contenedorGraficoDeudaDirecta">
-            <canvas id="canvasGraficoDeudaDirecta" height="500"/>
+            <canvas id="canvasGraficoDeudaDirecta" height="480"/>
         </div>
         <div>
             <label for="contenedorGraficoDeudaDirecta">Presiona para ver el detalle de tus deudas</label>
+        </div>
+    </div>
+    <div class="container" >
+        <div class="col-md-12">
+            <a href="espDeudaDirectaVigente.html"><span class="label label-default" >Deudas vigentes</span></a>
+            <a href="espDeudaDirecta30dias.html"><span class="label label-default" >Deudas 30 días</span></a>
+            <a href="espDeudaDirecta90dias.html"><span class="label label-default" >Deudas 90 días</span></a>
         </div>
     </div>
 </div>
@@ -89,7 +96,7 @@
 <script type="text/javascript" src="js/Chart.bundle.min.js"></script>
 <script type="text/javascript" src="js/Chart.min.js"></script>
 <script type="text/javascript">
-    app.initialize();
+
 
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
@@ -139,7 +146,6 @@
                 var label = char.data.labels[clickedElementindex];
                 //get value by index
                 var value = char.data.datasets[0].data[clickedElementindex];
-                alert(value+label);
                 if(label=="Deudas vigentes"){
                     window.location="espDeudaDirectaVigente.html";
                 }

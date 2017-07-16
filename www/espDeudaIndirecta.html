@@ -61,7 +61,7 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
+                        <li><a href="historico.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="configuracion.html"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Configuración</a></li>
@@ -73,13 +73,20 @@
             </div>
         </nav>
     </div>
-    <div class="container" >
+    <div class="container" align="center">
         <label for="contenedorGraficoDeudaIndirecta" ><b><h3>Deudas indirectas</h3></b></label>
         <div id="contenedorGraficoDeudaIndirecta">
-            <canvas id="canvasGraficoDeudaIndirecta" height="500"/>
+            <canvas id="canvasGraficoDeudaIndirecta" height="480"/>
         </div>
         <div>
             <label for="canvasGraficoDeudaIndirecta">Presiona para ver el detalle de tus deudas</label>
+        </div>
+    </div>
+    <div class="container" >
+        <div class="col-md-12">
+            <a href="espDeudaIndirectaVigente.html"><span class="label label-default" >Deudas vigentes</span></a>
+            <a href="espDeudaIndirecta30dias.html"><span class="label label-default" >Deudas 30 días</span></a>
+            <a href="espDeudaIndirecta90dias.html"><span class="label label-default" >Deudas 90 días</span></a>
         </div>
     </div>
 </div>
@@ -90,12 +97,23 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/Chart.bundle.min.js"></script>
 <script type="text/javascript" src="js/Chart.min.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
+
+
 <script type="text/javascript">
-    app.initialize();
+
+    function randomIntFromInterval(min,max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
+
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
     };
+
+    var dataRandom = [
+        randomIntFromInterval(800000,1200000),
+        randomIntFromInterval(600000,1000000),
+        randomIntFromInterval(800000,1800000)
+    ];
 
     window.chartColors = {
         red: 'rgb(255, 0, 0)',
@@ -107,11 +125,7 @@
         type: 'pie',
         data: {
             datasets: [{
-                data: [
-                    randomScalingFactor(),
-                    randomScalingFactor(),
-                    randomScalingFactor()
-                ],
+                data: dataRandom,
                 backgroundColor: [
                     window.chartColors.red,
                     window.chartColors.yellow,
@@ -141,7 +155,6 @@
                 var label = char.data.labels[clickedElementindex];
                 //get value by index
                 var value = char.data.datasets[0].data[clickedElementindex];
-                alert(value+label);
                 if(label=="Deudas vigentes"){
                     window.location="espDeudaIndirectaVigente.html";
                 }

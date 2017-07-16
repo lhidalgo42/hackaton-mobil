@@ -72,48 +72,14 @@
             </div>
         </nav>
     </div>
+
     <div class="container paddingGrafico" >
-        <label for="contenedorGraficoDeudaIndirectaDetalle" ><b><h3>Deudas indirectas</h3></b></label>
+        <label for="contenedorHistorico" ><b><h3>Resumen Historico</h3></b></label>
         <br>
-        <label for="contenedorGraficoDeudaIndirectaDetalle" ><b><h5>Detalle de deudas con mora de 90 días o más</h5></b></label>
-        <div id="contenedorGraficoDeudaIndirectaDetalle">
-            <canvas id="canvasGraficoDeudaIndirectaDetalle" height="500"/>
+        <div id="contenedorHistorico">
+            <canvas id="canvasHistorico" height="500"/>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="span5">
-                <table class="table table-striped table-condensed">
-                    <thead>
-                    <tr>
-                        <th>Institucion</th>
-                        <th>Monto</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Santander</td>
-                        <td>34.000.000</td>
-                        <td><span class="label label-success">Active</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>BCI</td>
-                        <td>12.000.000</td>
-                        <td><span class="label label-success">Active</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td bgcolor="#a1999b">Total</td>
-                        <td bgcolor="#a1999b">46.000.000</td>
-                        <td bgcolor="#a1999b"><span class="label label-success">Active</span>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 
 
@@ -157,47 +123,74 @@
         //dataRandom.push({label:"Total",value:total});
         dataRandom.push(total);
 
-        var barChartData = {
-            labels: Bancos,
-            datasets: [{
-                label: 'Instituciones',
-                backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-                borderColor: window.chartColors.red,
-                borderWidth: 1,
-                data: dataRandom
-            }]
+        var config = {
+            type: 'line',
+            data: {
+                labels: Bancos,
+                datasets: [{
+                    label: "Deudas Directas",
+                    backgroundColor: window.chartColors.red,
+                    borderColor: window.chartColors.red,
+                    data: [
+                        randomIntFromInterval(800000,3000000),
+                        randomIntFromInterval(300000,350000),
+                        randomIntFromInterval(670000,1200000),
+                        randomIntFromInterval(240000,800000),
+                        randomIntFromInterval(890000,1900000),
+                        randomIntFromInterval(1000000,1200000),
+                        randomIntFromInterval(1200000,3000000)
+                    ],
+                    fill: false,
+                }, {
+                    label: "Deudas Indirectas",
+                    fill: false,
+                    backgroundColor: window.chartColors.yellow,
+                    borderColor: window.chartColors.yellow,
+                    data: [
+                        randomIntFromInterval(800000,3000000),
+                        randomIntFromInterval(300000,350000),
+                        randomIntFromInterval(670000,1200000),
+                        randomIntFromInterval(240000,800000),
+                        randomIntFromInterval(890000,1900000),
+                        randomIntFromInterval(1000000,1200000),
+                        randomIntFromInterval(1200000,3000000)
+                    ],
+                }]
+            },
+            options: {
+                responsive: true,
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Instituciones'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Monto'
+                        }
+                    }]
+                }
+            }
         };
 
         window.onload = function() {
-            var ctx = document.getElementById("canvasGraficoDeudaIndirectaDetalle").getContext("2d");
-            window.myBar = new Chart(ctx, {
-                type: 'bar',
-                data: barChartData,
-                options: {
-                    responsive: true,
-                    legend: {
-                        position: 'top',
-                    }
-                },
-                animation: {
-                    duration: 0,
-                    onComplete: function () {
-                        // render the value of the chart above the bar
-                        var ctx = this.chart.ctx;
-                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, 'normal', Chart.defaults.global.defaultFontFamily);
-                        ctx.fillStyle = this.chart.config.options.defaultFontColor;
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'bottom';
-                        this.data.datasets.forEach(function (dataset) {
-                            for (var i = 0; i < dataset.data.length; i++) {
-                                var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
-                                ctx.fillText(dataset.data[i], model.x, model.y - 5);
-                            }
-                        });
-                    }}
-            });
-
+            var ctx = document.getElementById("canvasHistorico").getContext("2d");
+            window.myLine = new Chart(ctx, config);
         };
+
     </script>
 </body>
 

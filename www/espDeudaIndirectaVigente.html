@@ -1,10 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>FIYH</title>
 </head>
 <body>
-asdasdasdasd
+
+
+<div class="container">
+    <div class="row">
+        <nav class="navbar navbar-default navbar-fixed-left">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBarMenu" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="main.html">
+                        <img alt="Brand" src="img/iconos/logo.png" height="23" width="35">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navBarMenu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="main.html">Informe actual</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Situación actual <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="espDeudaDirecta.html">Deudas directas</a></li>
+                                <li><a href="espDeudaIndirecta.html">Deudas indirectas</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="espCreditosDisponibles.html">Créditos disponibles</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="historico.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Historico</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="configuracion.html"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Configuración</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="acerca.html"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Acerca de</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container paddingGrafico" align="center">
+        <label for="contenedorGraficoDeudaIndirectaDetalle" ><b><h3>Deudas indirectas</h3></b></label>
+        <br>
+        <label for="contenedorGraficoDeudaIndirectaDetalle" ><b><h5>Detalle de deudas vigentes</h5></b></label>
+        <div id="contenedorGraficoDeudaIndirectaDetalle">
+            <canvas id="canvasGraficoDeudaIndirectaDetalle" height="400"/>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="span5">
+                <table class="table table-striped table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Institucion</th>
+                        <th>Monto</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Santander</td>
+                        <td>34.000.000</td>
+                        <td><span class="label label-success">Active</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>BCI</td>
+                        <td>12.000.000</td>
+                        <td><span class="label label-success">Active</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#a1999b">Total</td>
+                        <td bgcolor="#a1999b">46.000.000</td>
+                        <td bgcolor="#a1999b"><span class="label label-success">Active</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="js/Chart.min.js"></script>
+
+
+<script type="text/javascript">
+
+    function randomIntFromInterval(min,max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
+
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+
+    var Bancos = ["BCI", "Santander", "Banco Estado", "Banco de Chile","Total"];
+    var color = Chart.helpers.color;
+    window.chartColors = {
+        red: 'rgb(255, 0, 0)',
+        yellow: 'rgb(255, 255, 0)',
+        green: 'rgb(0, 204, 0)'
+    };
+
+
+    var dataRandom = [
+        randomIntFromInterval(800000,1200000),
+        randomIntFromInterval(600000,1000000),
+        randomIntFromInterval(800000,1800000),
+        randomIntFromInterval(800000,1800000)
+    ];
+
+    var total=0;
+    dataRandom.forEach(function(entry) {
+        total = total+entry;
+    });
+    dataRandom.push(total);
+
+    var barChartData = {
+        labels: Bancos,
+        datasets: [{
+            label: 'Instituciones',
+            backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+            borderColor: window.chartColors.red,
+            borderWidth: 1,
+            data: dataRandom
+        }]
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById("canvasGraficoDeudaIndirectaDetalle").getContext("2d");
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top',
+                }
+            },
+            animation: {
+                duration: 0,
+                onComplete: function () {
+                    // render the value of the chart above the bar
+                    var ctx = this.chart.ctx;
+                    ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, 'normal', Chart.defaults.global.defaultFontFamily);
+                    ctx.fillStyle = this.chart.config.options.defaultFontColor;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+                    this.data.datasets.forEach(function (dataset) {
+                        for (var i = 0; i < dataset.data.length; i++) {
+                            var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
+                            ctx.fillText(dataset.data[i], model.x, model.y - 5);
+                        }
+                    });
+                }}
+        });
+
+    };
+
+</script>
 </body>
+
 </html>
