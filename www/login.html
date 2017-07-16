@@ -69,11 +69,12 @@
     <form class="form-signin" id="form">
 
         <h2 class="form-signin-heading">Introduzca sus Datos</h2>
+        <input type="hidden" name="_token" value="" id="token">
         <label for="inputEmail" class="sr-only">Direccion de Correo</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
         <label for="inputPassword" class="sr-only">Contrasena</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-        <input type="hidden" name="remeber" value="0">
+        <input type="hidden" name="remember" value="0">
         <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
     </form>
 
@@ -87,11 +88,26 @@
         $.ajax({
             method: "POST",
             data: $("#form").serialize(),
-            url: "http://p1.vcpc.cl/sessions.store",
+            crossDomain: true,
+            url: "http://p1.vcpc.cl/api/auth/login",
             success:function (data) {
-                console.log(data);
+                var dato = JSON.parse(data);
+                if(dato.status == "ok")
+                    window.location.href = "main.html";
+                else
+                    alert("El usuario o contrasena Incorrectos");
             }
         })
+    });
+
+    $.ajax({
+        type: "POST",
+        crossDomain: true,
+        url: "http://p1.vcpc.cl/api/auth/token",
+        data:{},
+        success: function (data) {
+            $("#token").val(data);
+        }
     });
 
 </script>
