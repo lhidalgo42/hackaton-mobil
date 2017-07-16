@@ -40,3 +40,11 @@ function barcoderead() {
         }
     );
 }
+function ocultarContrato()
+{
+    document.getElementById("formTipoContrato").style="display: none";
+}
+
+function mostrarContrato() {
+    document.getElementById("formTipoContrato").style="display: block";
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <title>Perfil Laboral</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- Multiple Checkboxes -->
+<div class="form-group">
+    <label class="col-md-4 control-label" >Trabajador</label>
+    <div class="col-md-4">
+        <div class="radio">
+            <label><input type="radio" name="optradio" value="Dependiente" onchange="mostrarContrato()" checked="true">Dependiente</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="optradio" value="Independiente" onchange="ocultarContrato()">Independiente</label>
+        </div>
+    </div>
+</div>
+
+<!-- Multiple Checkboxes -->
+<div class="form-group" id="formTipoContrato">
+    <label class="col-md-4 control-label">Tipo Contrato</label>
+    <div class="col-md-4">
+        <div class="radio">
+            <label><input type="radio" name="optradio" value="Definido" id="optradio">Definido</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="optradio" value="Indefinido" id="optradio2">Indefinido</label>
+        </div>
+    </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+    <label class="col-md-4 control-label" for="txtAntiguedad">Antiguedad Laboral</label>
+    <div class="col-md-4">
+        <input id="txtAntiguedad" name="txtAntiguedad" type="number" min="0" placeholder="3 (años)" class="form-control input-md">
+
+    </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+    <label class="col-md-4 control-label" for="txtFijos">Ingresos Fijos</label>
+    <div class="col-md-4">
+        <input id="txtFijos" name="txtFijos" type="number" placeholder="650.000" class="form-control input-md">
+
+    </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+    <label class="col-md-4 control-label" for="txtVariables">Ingresos Variables</label>
+    <div class="col-md-4">
+        <input id="txtVariables" name="txtVariables" type="number" placeholder="150.000" class="form-control input-md">
+
+    </div>
+</div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
