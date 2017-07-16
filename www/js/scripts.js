@@ -48,3 +48,21 @@ function ocultarContrato()
 function mostrarContrato() {
     document.getElementById("formTipoContrato").style="display: block";
 }
+
+function guardarPL()
+{
+    //informacion del usuario
+    tipoTrabajador = document.getElementsByName("rbTrabajador").values;
+    tipoContrato  =document.getElementsByName("rbContrato").values;
+    antiguedad = document.getElementById("txtAntiguedad").values;
+    fijo =document.getElementById("txtFijos").values;
+    variable = document.getElementById("txtVariable").values
+
+    $.post("p1.vcpc.cl/servicio/crear",{
+        "algo":algo
+
+    },function( data ) {
+        $( ".result" ).html( data );
+    });
+
+}

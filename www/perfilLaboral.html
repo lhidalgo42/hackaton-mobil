@@ -12,15 +12,16 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+<h2 style="text-align: center">Informacion Laboral</h2>
 <!-- Multiple Checkboxes -->
 <div class="form-group">
     <label class="col-md-4 control-label" >Trabajador</label>
     <div class="col-md-4">
         <div class="radio">
-            <label><input type="radio" name="optradio" value="Dependiente" onchange="mostrarContrato()" checked="true">Dependiente</label>
+            <label><input type="radio" name="rbTrabajador" value="Dependiente" onchange="mostrarContrato()" checked="true">Dependiente</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="optradio" value="Independiente" onchange="ocultarContrato()">Independiente</label>
+            <label><input type="radio" name="rbTrabajador" value="Independiente" onchange="ocultarContrato()">Independiente</label>
         </div>
     </div>
 </div>
@@ -30,10 +31,10 @@
     <label class="col-md-4 control-label">Tipo Contrato</label>
     <div class="col-md-4">
         <div class="radio">
-            <label><input type="radio" name="optradio" value="Definido" id="optradio">Definido</label>
+            <label><input type="radio" name="rbContrato" value="Definido" >Definido</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="optradio" value="Indefinido" id="optradio2">Indefinido</label>
+            <label><input type="radio" name="rbContrato" value="Indefinido">Indefinido</label>
         </div>
     </div>
 </div>
