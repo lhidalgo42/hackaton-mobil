@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="css/carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>FIYH</title>
 </head>
 <body>
@@ -30,7 +31,6 @@
 
 <div class="container">
     <div class="row">
-
         <nav class="navbar navbar-default navbar-fixed-left">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -49,10 +49,11 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informe de deudas<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="espDeudaDirectaVigente.html">Deudas directas</a></li>
-                                <li><a href="espDeudaDirecta30dias.html">Deudas indirectas</a></li>
+                                <li><a href="espDeudaDirecta.html.html">Deudas directas</a></li>
+                                <li><a href="espDeudaIndirecta.html">Deudas indirectas</a></li>
+                                <li><a href="#"></a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="espDeudaDirecta90dias.html">Créditos disponibles</a></li>
+                                <li><a href="espCreditosDisponibles.html">Créditos disponibles</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -74,51 +75,88 @@
                 </div>
             </div>
         </nav>
-
-
-        <div class="col-md-12">
-            <div class="form-horizontal">
-                <fieldset>
-                    <legend>Configuración</legend>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Notificaciones</label>
-                        <div class="col-md-4">
-                            <div class="checkbox">
-                                <label for="checkboxes-0">
-                                    <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-                                        Recibir notificaciones de todos los bancos
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label for="checkboxes-1">
-                                    <input type="checkbox" name="checkboxes" id="checkboxes-1" value="2">
-                                        Recibir notificaciones de sugerencias
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                </fieldset>
-            </div>
+    </div>
+    <div class="container" >
+        <label for="contenedorGraficoDeudaIndirecta" ><b><h3>Deudas indirectas</h3></b></label>
+        <div id="contenedorGraficoDeudaIndirecta">
+            <canvas id="canvasGraficoDeudaIndirecta" height="500"/>
         </div>
-        <hr>
-        <div class="col-md-12">
-            <button id="btnGuardarConfiguracion" name="btnGuardarConfiguracion" class="btn btn-primary">Guardar</button>
+        <div>
+            <label for="canvasGraficoDeudaIndirecta">Presiona para ver el detalle de tus deudas</label>
         </div>
     </div>
 </div>
-
-
 
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="js/Chart.min.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
-
 <script type="text/javascript">
     app.initialize();
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
 
+    window.chartColors = {
+        red: 'rgb(255, 0, 0)',
+        yellow: 'rgb(255, 255, 0)',
+        green: 'rgb(0, 204, 0)'
+    };
+
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.yellow,
+                    window.chartColors.green
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                "Deudas 90 días o más",
+                "Deudas 30 días o más",
+                "Deudas vigentes"
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true
+        }};
+    var canvasGrafico = document.getElementById("canvasGraficoDeudaIndirecta");
+    var ctx = canvasGrafico.getContext("2d");
+    char = new Chart(ctx, config);
+    $("#canvasGraficoDeudaIndirecta").click(
+        function(evt){
+            var activePoints = char.getElementsAtEvent(evt);
+            if(activePoints.length > 0) {
+                var clickedElementindex = activePoints[0]["_index"];
+                //get specific label by index
+                var label = char.data.labels[clickedElementindex];
+                //get value by index
+                var value = char.data.datasets[0].data[clickedElementindex];
+                alert(value+label);
+                if(label=="Deudas vigentes"){
+                    window.location="espDeudaIndirectaVigente.html";
+                }
+                if(label=="Deudas 30 días o más"){
+                    window.location="espDeudaIndirecta30dias.html";
+                }
+                if(label=="Deudas 90 días o más"){
+                    window.location="espDeudaIndirecta90dias.html";
+                }
+            }
+        }
+    );
 </script>
 </body>
 
