@@ -94,7 +94,71 @@
 <script type="text/javascript" src="js/Chart.min.js"></script>
 <script type="text/javascript">
     app.initialize();
-    loadChartDeudaDirecta();
+
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+
+    window.chartColors = {
+        red: 'rgb(255, 51, 51)',
+        yellow: 'rgb(255, 255, 0)',
+        green: 'rgb(0, 204, 0)'
+    };
+
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.yellow,
+                    window.chartColors.green,
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                "Deudas 90 días o más",
+                "Deudas 30 días o más",
+                "Deudas vigentes"
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true
+        }};
+    var canvasGrafico = document.getElementById("canvasGraficoDeudaDirecta");
+    var ctx = canvasGrafico.getContext("2d");
+    char = new Chart(ctx, config);
+    $("#canvasGraficoDeudaDirecta").click(
+        function(evt){
+            var activePoints = char.getElementsAtEvent(evt);
+            if(activePoints.length > 0) {
+                var clickedElementindex = activePoints[0]["_index"];
+                //get specific label by index
+                var label = char.data.labels[clickedElementindex];
+                //get value by index
+                var value = char.data.datasets[0].data[clickedElementindex];
+                alert(value+label);
+                if(label=="Deudas vigentes"){
+                    window.location="espDeudaDirectaVigente.html";
+                }
+                if(label=="Deudas 30 días o más"){
+                    window.location="espDeudaDirecta30dias.html";
+                }
+                if(label=="Deudas 90 días o más"){
+                    window.location="espDeudaDirecta90dias.html";
+                }
+
+            }
+        }
+    );
+
+
 </script>
 </body>
 
