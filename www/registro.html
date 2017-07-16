@@ -2,188 +2,217 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"/>
     <title>Registro</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">
-    <div class="row">
-            <div class="panel-group" id="panel-528756">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a class="panel-title" data-toggle="collapse" data-parent="#panel-528756" href="#panel-element-639118">Datos Personales</a>
-                    </div>
-                    <div id="panel-element-639118" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <form role="form">
-                                            <div class="form-group">
-                                                <label>
-                                                    Rut
-                                                </label>
-                                                <input type="text" class="form-control" id="txtRut" required="true">
-                                                <input type="hidden" class="form-control" id="txtToken">
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>
-                                                    Nombre
-                                                </label>
-                                                <input type="text" class="form-control" id="txtNombre" required="true">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>
-                                                    Apellidos
-                                                </label>
-                                                <input type="text" class="form-control" id="txtApellidos" required="true">
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label" >Fecha Nacimiento</label>
-                                                <div class="col-md-4">
-                                                    <input id="txtDate" name="txtDate" type="text"  class="form-control input-md" required="true">
-                                                    <span class="help-block">help</span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>
-                                                    Direccion
-                                                </label>
-                                                <input type="text" class="form-control" id="txtDireccion">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>
-                                                    Telefono
-                                                </label>
-                                                <input type="tel" class="form-control" id="txtTelefono">
-                                            </div>
-                                            <!--<button type="submit" class="btn btn-default">
-                                                Submit
-                                            </button>-->
-                                        </form>
-
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
+    <form action="">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                           aria-expanded="true" aria-controls="collapseOne">
+                            Informacion Personal
+                        </a>
+                    </h4>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <a class="panel-title" data-toggle="collapse" data-parent="#panel-528756" href="#panel-element-615348">Validacion de identidad</a>
-                    </div>
-                    <div id="panel-element-615348" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <label>
-                                    Password
-                                </label>
-                                <input type="password" class="form-control" id="txtPassword">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="txtPasswordRetry">
-                            </div>
-                            <!-- Button -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Verificar identidad</label>
-                                <div class="col-md-4">
-                                    <button id="btnEscanear" name="btnEscanear" class="btn btn-primary" onclick="barcoderead()" type="button">Escanear C.I</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="checkbox" />
-                    <a id="modal-199126" href="#modal-container-199126" role="button" class="btn" data-toggle="modal">Acepto los Terminos y Condiciones</a>
-
-                    <div class="modal fade" id="modal-container-199126" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                        ×
-                                    </button>
-                                    <h4 class="modal-title" id="myModalLabel">
-                                        Terminos y Condiciones
-                                    </h4>
-                                </div>
-                                <div class="modal-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur eos modi nesciunt quibusdam. Amet, at commodi cumque distinctio eius eveniet, excepturi illo labore laudantium odio quam rerum sunt, ullam voluptas?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">
-                                        Close
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input type="checkbox" />
-                            <a id="modal-683142" href="#modal-container-683142" role="button" class="btn" data-toggle="modal">Autorizo consultas al SBIF en mi nombre</a>
-                            <div class="modal fade" id="modal-container-683142" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                ×
-                                            </button>
-                                            <h4 class="modal-title" id="myModalLabe2">
-                                                Autorizacion de SBIF
-                                            </h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis eligendi modi nisi repellat. Aliquid dolore dolorem, eos explicabo fugiat, ipsum itaque iure quasi quia quos reiciendis rem unde vero.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                                Close
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-            </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Button -->
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
                         <div class="form-group">
-                            <div class="col-md-4">
-                                <button id="btnRegistrar" name="btnRegistrar" class="btn btn-primary" disabled="true">Registrarse</button>
-                            </div>
+                            <label for="name">Nombre</label>
+                            <input type="text" class="form-control" id="name" placeholder="Nombre" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Apellido</label>
+                            <input type="text" class="form-control" id="lastname" placeholder="Apellido"
+                                   name="lastname">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefono</label>
+                            <input type="text" class="form-control" id="phone" placeholder="Telefono" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="birth_date">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="birth_date" placeholder="Fecha de Nacimiento"
+                                   name="birth_date">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Direccion</label>
+                            <input type="text" class="form-control" id="address" placeholder="Direccion" name="address">
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Datos de Verificacion
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="rut">Rut</label>
+                            <input type="text" class="form-control" id="rut" placeholder="Rut" name="rut" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="dni_number">Numero de Serie</label>
+                            <input type="text" class="form-control" id="dni_number" placeholder="Numero de Serie"
+                                   name="dni_number" readonly>
+                        </div>
+                        <a href="#" class="btn btn-info" onclick="barcoderead()">Valide su C.I</a>
+                        <div class="form-group">
+                            <label for="password">Contrasena</label>
+                            <input type="text" class="form-control" id="password" placeholder="Contrasena"
+                                   name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Confirmacion de Contrasena</label>
+                            <input type="text" class="form-control" id="password2" placeholder="Contrasena"
+                                   name="password2">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="sbif"> <a href="#" data-toggle="modal"
+                                                                       data-target="#sbifModal">Nos autoriza a poder
+                                utilizar su informacion en el Sbif (click para mas informacion)</a>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="tyc"> <a href="#" data-toggle="modal"
+                                                                      data-target="#tycModal">Accepta los Terminos y
+                                Condiciones (click para mas informacion)</a>
+                            </label>
+                        </div>
+                        <button class="btn btn-primary btn-lg btn-block">Registrarse</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal fade" id="sbifModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Terminos y Conficiones del Sbif</h4>
+            </div>
+            <div class="modal-body">
+                Al utilizar el aplicativo nos autoriza a nosotros como institucion poder acceder y utilizar su
+                informacion del sbif...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
-<div id="result"></div>
-<div id="contenidoRegistro" ></div>
+<div class="modal fade" id="tycModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Terminos y Conficiones de Servicio</h4>
+            </div>
+            <div class="modal-body">
+                Al acceptar esto nos permite a nosotros poder utilizar y manupular su infromacion, venta y/o transpaso
+                de infromacion bancos.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="cordova.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/scripts.js"></script>
+<script>
+    function barcoderead() {
+        cordova.plugins.barcodeScanner.scan(
+            function (result) {
+                console.log("We got a barcode\n" +
+                    "Result: " + result.text + "\n" +
+                    "Format: " + result.format + "\n" +
+                    "Cancelled: " + result.cancelled);
+
+                if (result.format == "QR_CODE") {
+                    $.ajax({
+                        type: "GET",
+                        crossDomain: true,
+                        url: result.text,
+                        rejectUnauthorized: false,
+                        success: function (data) {
+                            parser = new DOMParser();
+                            xmlDoc = parser.parseFromString(data, "text/xml");
+                            var estado = xmlDoc.getElementsByClassName("setWidthOfSecondColumn")[0].innerHTML;
+                            var dni_number = xmlDoc.getElementsByName("form:docNumber")[0].value;
+                            var rut = xmlDoc.getElementsByName("form:run")[0].value;
+                            var tipo = xmlDoc.getElementsByName("form:selectDocType")[0].value;
+                            if (estado == "Vigente") {
+                                if (tipo == "CEDULA") {
+                                    $("#rut").val(rut);
+                                    $("#dni_number").val(dni_number)
+                                }
+                                else {
+                                    alert("Necesita Tener una Cedula de Identidad Chilena");
+                                }
+                            }
+                            else {
+                                alert("Su cedula no esta vigente, accerquese a el registro civil mas cercano a su domicilio.");
+                            }
+                        },
+                        error:function (e) {
+                            console.log(e)
+                        }
+                    });
+
+                }
+                else {
+                    alert("proximamente");
+                }
+
+
+            },
+            function (error) {
+                alert("Scanning failed: " + error);
+            },
+            {
+                preferFrontCamera: false, // iOS and Android
+                showFlipCameraButton: false, // iOS and Android
+                showTorchButton: true, // iOS and Android
+                torchOn: false, // Android, launch with the torch switched on (if available)
+                prompt: "Ponga el Carnet de Identidad en la Camara", // Android
+                resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+                formats: "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+                orientation: "portrait", // Android only (portrait|landscape), default unset so it rotates with the device
+                disableAnimations: true, // iOS
+                disableSuccessBeep: true // iOS
+            }
+        );
+    }
+</script>
 </body>
 
 </html>
